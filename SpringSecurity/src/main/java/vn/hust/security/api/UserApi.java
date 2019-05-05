@@ -20,7 +20,6 @@ public class UserApi {
 
 	@PostMapping("/addUser")
 	public void addUser(@RequestBody UserEntity userEntity) {
-		System.out.println(userEntity.getUsername());
 		userEntity.setRole("ROLE_USER");
 		userEntity.setPassword(BCrypt.hashpw(userEntity.getPassword(), BCrypt.gensalt()));
 		userEntity.setEnabled(1);
@@ -29,7 +28,6 @@ public class UserApi {
 
 	@PostMapping("/search")
 	public Optional<UserEntity> searchById(@RequestBody UserEntity userEntity) {
-		System.out.println(userEntity.getUsername());
 		return userService.searchById(userEntity.getId());
 	}
 
