@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#search").click(function() {
+			var id = $("#id_search").val();
+			var user = {
+				"id" : id,
+				"username" : "Hoang Van Toan"
+			}
+			console.log(user);
+			$.ajax({
+				url : 'api/v1/web/search',
+				type : "POST",
+				data : JSON.stringify(user),
+				contentType : "application/json; charset=utf-8",
+				dataType : "json",
+				success : function(data) {
+					alert(data);
+				}
+			})
+		})
+	})
+</script>
+<title>Search</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Search By Id</h1>
+		<div>
+			ID: <input type="text" id="id_search">
+			<button id="search">Search</button>
+		</div>
+	</div>
+</body>
+</html>

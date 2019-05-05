@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#register").click(function() {
+			var username = $("#username").val();
+			var password = $("#password").val();
+			var rePassword = $("#re_password").val();
+			if (password == rePassword) {
+				var user = {
+					"username" : username,
+					"password" : password
+				}
+				console.log(user);
+				$.ajax({
+					url : 'api/v1/web/addUser',
+					type : "POST",
+					data : JSON.stringify(user),
+					contentType : "application/json; charset=utf-8",
+					dataType : "json",
+					success : function(data) {
+						alert("Add Success!");
+					}
+				})
+			} else {
+				alert("Repassword is incorect!");
+			}
+		})
+	})
+</script>
+<title>Home</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Register</h1>
+		<table>
+			<tr>
+				<td>Username:</td>
+				<td><input type="text" id="username"></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input type="password" id="password"></td>
+			</tr>
+			<tr>
+				<td>Re_password:</td>
+				<td><input type="password" id="re_password"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><button id="register">Register</button></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

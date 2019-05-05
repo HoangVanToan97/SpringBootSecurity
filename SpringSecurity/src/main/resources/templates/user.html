@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>User</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Welcome to User!</h1>
+		<a href="/admin">Admin Page</a>
+		<form th:action="@{/j_spring_security_logout}" method="post">
+			<button>Logout</button>
+		</form>
+	</div>
+</body>
+</html>
